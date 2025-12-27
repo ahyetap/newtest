@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Étap — Lecteur audio</title>
+<style>
+  body {
+    background:#000;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    font-family:monospace;
+  }
+  h2 {
+    margin-bottom:20px;
+    font-size:1.5em;
+    letter-spacing:2px;
+  }
+  .player {
+    width:80%;
+    max-width:700px;
+  }
+  audio {
+    width:100%;
+    margin-top:10px;
+    outline:none;
+  }
+  ul {
+    list-style:none;
+    padding:0;
+    margin:20px 0 0;
+    width:100%;
+  }
+  li {
+    padding:6px 0;
+    cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    transition:color 0.2s;
+  }
+  li:hover {
+    color:#0ff;
+  }
+</style>
+</head>
+<body>
+
+<h2>Étap — Playlist</h2>
+
+<div class="player">
+  <audio id="player" controls></audio>
+
+  <ul id="playlist">
+    <li data-src="https://freight.cargo.site/m/C2640483102756640432098516544097/01speed.wav">Speed</li>
+    <li data-src="https://freight.cargo.site/m/I2640483102775087176172226095713/02enfer.wav">Enfer</li>
+    <li data-src="https://freight.cargo.site/m/H2640483102793533920245935647329/03pause.wav">Pause</li>
+    <li data-src="https://freight.cargo.site/m/F2640483102811980664319645198945/04Yzon.wav">Yzon</li>
+    <li data-src="https://freight.cargo.site/m/B2640483102830427408393354750561/05monpte.wav">Mon Pote</li>
+    <li data-src="https://freight.cargo.site/m/Y2641668891747500611068108352097/01---eveilmix2kickfortfort.wav">Eveil</li>
+    <li data-src="https://freight.cargo.site/m/K2641668891765947355141817903713/02---quetemix3kick.wav">Quête</li>
+    <li data-src="https://freight.cargo.site/m/Z2641668891784394099215527455329/03---latraquemixGOD.wav">La Traque</li>
+    <li data-src="https://freight.cargo.site/m/P2641668891802840843289237006945/04---letapmix3kick.wav">L'Étape</li>
+    <li data-src="https://freight.cargo.site/m/K2641671157524181696664914242145/LYRA.wav">Lyra</li>
+    <li data-src="https://freight.cargo.site/m/Z2641671157542628440738623793761/Retour-de-l-ombre.wav">Retour de l'Ombre</li>
+    <li data-src="https://freight.cargo.site/m/K2641671157561075184812333345377/AR.wav">AR</li>
+    <li data-src="https://freight.cargo.site/m/R2641672436160247165842484505185/Jul_Remix.wav">JUL x Étap</li>
+    <li data-src="https://freight.cargo.site/m/A2641672938003919691110836218465/Etap---bouleAZ.wav">DBZ</li>
+    <li data-src="https://freight.cargo.site/m/F2641672119411204676175773706849/mamie.wav">Mamie</li>
+  </ul>
+</div>
+
+<script>
+  const player = document.getElementById("player");
+  const items = document.querySelectorAll("#playlist li");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      player.src = item.getAttribute("data-src");
+      player.play();
+      items.forEach(el => el.style.color = "#fff");
+      item.style.color = "#0ff";
+    });
+  });
+
+  // Lecture automatique du premier morceau
+  items[0].click();
+</script>
+
+</body>
+</html>
